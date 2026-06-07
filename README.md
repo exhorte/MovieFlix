@@ -1,50 +1,80 @@
-# Welcome to your Expo app 👋
+# MovieFlix
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+MovieFlix is a React Native app built with Expo and `expo-router`. It provides a modern movie discovery experience using data from The Movie Database (TMDB). The app includes a home screen with latest movies, a search entry point, and a tab-based structure for future expansion.
 
-## Get started
+## Key features
+
+- Expo + React Native app using `expo-router` for file-based navigation
+- Home screen with a movie list fetched from TMDB
+- Custom movie cards showing title, rating, release year, and poster images
+- Tab navigation skeleton with placeholders for `Search`, `Saved`, and `Profile`
+- NativeWind styling with Tailwind-friendly utility classes
+- Asset-driven UI using centralized icon and image constants
+
+## Project structure
+
+- `app/` - main app routes and screens
+  - `app/(tabs)/index.tsx` - home screen displaying the movie feed
+  - `app/(tabs)/search.tsx` - search screen placeholder
+  - `app/(tabs)/saved.tsx` - saved movies placeholder
+  - `app/(tabs)/profile.tsx` - profile placeholder
+  - `app/movies/[id].tsx` - movie detail route stub
+  - `app/_layout.tsx` - root stack layout
+- `app/components/` - reusable UI components
+  - `MovieCard.tsx` - movie card component used in the list
+  - `SearchBar.tsx` - search input component
+- `app/services/` - API helper and data fetching logic
+  - `api.ts` - TMDB movie fetch helper
+  - `useFetch.ts` - custom hook for loading state and async fetch
+- `assets/` - icon and image assets used by the app
+- `constants/` - centralized image and icon references
+
+## Setup
 
 1. Install dependencies
 
-   ```bash
-   npm install
-   ```
-
-2. Start the app
-
-   ```bash
-   npx expo start
-   ```
-
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
 ```bash
-npm run reset-project
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. Create a local environment file
 
-## Learn more
+Create a `.env` file at the project root with your TMDB key:
 
-To learn more about developing your project with Expo, look at the following resources:
+```env
+EXPO_PUBLIC_MOVIE_API_KEY=your_tmdb_api_key_here
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+> The app reads `EXPO_PUBLIC_MOVIE_API_KEY` from `process.env` to access TMDB.
 
-## Join the community
+3. Start the development server
 
-Join our community of developers creating universal apps.
+```bash
+npx expo start
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+4. Launch on a device or emulator
+
+- Android: `npm run android`
+- iOS: `npm run ios`
+- Web: `npm run web`
+
+## Notes
+
+- The `Search`, `Saved`, and `Profile` screens are currently placeholders.
+- The `movies/[id]` screen is currently a stub and can be expanded with detailed movie content.
+- The home screen shows popular movies using TMDB's discover endpoint.
+
+## Technology stack
+
+- `expo`
+- `react`
+- `react-native`
+- `expo-router`
+- `nativewind`
+- `tailwindcss`
+- `@react-navigation/bottom-tabs`
+
+## GitHub remote
+
+This repository can be pushed to `https://github.com/exhorte/MovieFlix.git` once the remote is configured.
